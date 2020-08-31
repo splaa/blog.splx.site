@@ -9,8 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,9 +22,20 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container">
+                @include('flash::message')
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                @php
+                    flash('Welcome Aboard!');
+                    flash('Welcome Aboard!')->success();
+                    flash('Message')->error();
+                    flash('Message')->warning();
+                    flash('Message')->overlay();
+                    flash()->overlay('Modal Message', 'Modal Title');
+                    flash('Message')->important();
+                    flash('Message')->error()->important();
+                @endphp
                 <button class="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
@@ -97,5 +106,11 @@
     </main>
     @include('layouts.footer')
 </div>
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script>
+    $('#flash-overlay-modal').modal();
+</script>
 </body>
 </html>
