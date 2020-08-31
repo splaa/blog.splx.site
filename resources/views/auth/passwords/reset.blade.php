@@ -1,14 +1,4 @@
 @extends('layouts.app')
-@section('breadcrumbs')
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('login')}}">Login</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('password.reset') }}">Reset</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Change</li>
-        </ol>
-    </nav>
-@endsection
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
