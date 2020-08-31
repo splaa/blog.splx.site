@@ -1,4 +1,4 @@
-@extends('elis-dn.layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
