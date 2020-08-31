@@ -9,22 +9,21 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<div id="app">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'SplX-2020') }}
                 </a>
                 <button class="navbar-toggler"
                         type="button"
@@ -43,7 +42,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav mr-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -84,10 +83,27 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+    </header>
+    <main class="app-content py-3">
+        <div class="container">
             @yield('content')
-        </main>
-    </div>
+        </div>
+    </main>
+
+    {{--    Footer  --}}
+    <footer class="fixed-bottom bg-primary">
+        <div class="container">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">
+                <p>&copy; {{ date('Y') }} Copyright: - <a href="https://splx.site">Splx-{{ date('Y') }}</a></p>
+            </div>
+            <!-- Copyright -->
+        </div>
+    </footer>
+
+</div>
+{{--    end Footer  --}}
+<!-- Scripts -->
+<script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>

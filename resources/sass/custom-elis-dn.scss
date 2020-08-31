@@ -1,0 +1,23 @@
+// Colors
+$primary: #337ab7;
+$success: #4bd24d;
+$info:    #5bc0de;
+$warning: #f0ad4e;
+$danger:  #d9534f;
+
+//  Nav-bar
+$navbar-dark-color: rgba(#fff, .8);
+$navbar-dark-hover-color: rgba(#fff, .95);
+
+.navbar{
+    background-color: #0C64a2;
+    padding: 0.35rem 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+footer{
+    color: rgba(#fff, .8);
+}
+footer a{
+    color: rgba(#fff, .8);
+}
