@@ -30,3 +30,21 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+  deploy-splx.site:
+    - name: SCP Upload
+      # Вы можете прикрепить к точной фиксации или версии.
+      # uses: betanzos/scp-upload@4afbc824f4b0940d2b1ae862590033424385e3ab
+      uses: betanzos/scp-upload@v1
+      with:
+        # Source local file path
+        source: /var/www/blog.splx.site
+        # Remote host
+        host: splx.site
+        # Remote host SSH port
+        port: # optional, default is 22
+        # Remote host username
+        username: splx
+        # SSH private key
+        key: 
+        # Remote directory to copy the file
+        remote_dir: # optional, default is ~
