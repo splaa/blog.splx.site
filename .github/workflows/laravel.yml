@@ -31,20 +31,29 @@ jobs:
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
   deploy-splx.site:
-    - name: SCP Upload
-      # Вы можете прикрепить к точной фиксации или версии.
-      # uses: betanzos/scp-upload@4afbc824f4b0940d2b1ae862590033424385e3ab
-      uses: betanzos/scp-upload@v1
+    - name: Deploy blog.splx.site
+      uses: alinz/ssh-scp-action@master
+      env:
+        HELLO: cool
+        MESSAGE: hello world
       with:
-        # Source local file path
-        source: /var/www/blog.splx.site
-        # Remote host
-        host: splx.site
-        # Remote host SSH port
-        port: # optional, default is 22
-        # Remote host username
-        username: splx
-        # SSH private key
-        key: 
-        # Remote directory to copy the file
-        remote_dir: # optional, default is ~
+        key: ${{ secrets.SSH_KEY }}
+        host: ${{ secrets.HOST }}
+        port: ${{ secrets.PORT }}
+        user: ${{ secrets.USER }}
+        # runs this on remove server
+        # rm -rf /var/www/blog.splx.site
+        ssh_before: |
+         cd /var/www/blog.splx.site && git pull
+          echo $HELLO
+          echo $MESSAGE
+          ls -lath
+
+        # then uploads these 2 files
+        scp: |
+
+        # then run these commands
+        ssh_after: |
+          echo $HELLO
+          chmod -R 777 storage bootstrap/cache
+          ls -lath
